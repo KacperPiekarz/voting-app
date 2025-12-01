@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  voting-api:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis-db
+    environment:
+      - REDIS_HOST=redis-db
+
+  redis-db:
+    image: redis:alpine
+    container_name: redis-db
+    ports:
+      - "6379:6379"

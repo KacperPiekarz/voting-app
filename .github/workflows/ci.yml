@@ -1,0 +1,21 @@
+name: CI Voting App
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pobranie kodu
+        uses: actions/checkout@v3
+
+      - name: Ustawienie Pythona
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalacja zaleznosci
+        run: pip install -r requirements.txt
+
+      - name: Uruchomienie testow
+        run: pytest tests/
