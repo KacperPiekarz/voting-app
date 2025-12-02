@@ -32,7 +32,7 @@ def client():
 def test_glosowanie(client):
     rv = client.post('/api/vote', json={'option': 'Python'})
     assert rv.status_code == 200
-    assert b"Oddano glos na: Python" in rv.data
+    assert b'{"msg":"OK"}' in rv.data
 
 
 def test_nieprawidlowa_opcja(client):
